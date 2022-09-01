@@ -1,0 +1,138 @@
+<<part1>>
+The Internet
+
+
+이번주차 목차
+인터넷의 토폴로지(topology)와 도메인 네임 시스템을 알아보자
+도메인 네임 : 우리가 인터넷을 쉽게 이용할 수 있도록 도와주는 것
+인터넷에 포함되는 포로토콜에 대해 알하보자
+인터넷 발전에 관한 Abilene Project, Internet2와 같은 노력들을 알아보자
+마지막으로 IPv6를 알아보자
+
+AN INTRODUCTION TO THE INTERNET.
+인터넷의 발전:
+	1969년 9월 1일이 인터넷이 태어난 날로 본다.근간이 되는 ARPANET이라는 네트워크가 처음 소개된 날이기 때문에
+	UCLA에 있는 컴퓨터와 처음 연결되면서 작동했다.
+	알파넷은 1969말까지 4대의 컴퓨터와 연결되며, 1970년대에는 13대의 컴퓨터와 연결됨
+	1972년에는 16개, 1972년에는 30개이상, 1973년에는 40개이상 연결됨
+	1973에 알파넷의 근간이 되는 전송프로토콜은 Vinton Cerf and Robert Kahn에 의해 개발됨
+	국방성(Defense Communications Agency (DCA))에서 알파넷을 접수함.
+	TCP를 1978년에 정규화해서 다듬는다. 그때 TCP와 IP의 형태로 나누어짐
+	1981년에 적용되고 1982년에 적용이 마무리됨
+	발전속도가 느려지자 DCA에서는 군사용의 MILNET과 학계용의 ARPANET으로 나눔
+	National Science Foundation (NSF)에서 CSNET과 ARPANET을 하나의 네트워크로 묶음(1980s) => NSFNET이 됨(1985)
+	1987년 T1 lines으로 망이 업그레이드 되었다.(속도 상승의 노력)
+	미국방부의 NSFNET관여는 1990년에 끝이남
+	1990년대 초반까지 NSFNET을 연구학술 목적으로 사용하였다.
+	AT&T, MCI, and Sprint와 같은 통신사업자들이 주축으로 NSFNET을 민영화 하였다.
+	1995년말 미국 대부분의 집에서 인터넷 서비스가 제공되기 시작하였다.
+
+[그림 8-1 19:18]
+Iternet Service Provider(ISP) : 인터넷 서비스를 제공하는 사업자
+Point of Presence(PoP) : 다양한 네트워크 환경에 인터넷 서비스를 제공하기 위한 방식
+
+<<part2>>
+ACCESSING INFORMATION ON THE INTERNET
+인터넷이 동작하는 방식:
+	인터넷에서의 대부분의 서비스는 Mainframe이나 서버컴퓨터들이 파일,웹페이지 스트리밍 미디어같은 컨텐츠를 제공하면서 이루어진다.
+	인터넷에서 IP,DNS,HTTP,FTP와같은 다양한 프로토콜들이 준비되어 있다.
+	 .com, .net, .org, .int 같은 인터넷 도메인들이 널널하게(loosely) 적용되고 있다.
+	DNS(도메인 네임 서비스)는 친숙한 이름을 IP주소변환하여 접근하게 해주는 역할을 한다.
+	email, instant messaging VoIP와 같은 어플리케인션은 person-to-person, person-to-group, and group-togroup communication이 되도록 지원한다.
+
+The Origin of the Domain Name System:
+	ARPANET초기에는 hosts.txt을 이용해서 다른 컴퓨터가 어디에 있는지 파악했다.
+	업데이트 될때마다 hosts.txt를 업데이트해서 다른 컴퓨터에게 전달했다.
+	ARPANET이 커질수록 문제점이 커짐 => 분산처리 데이터베이스를 이용한 새로운 연락방식을 고안하게 됨
+	새로고안된 도메인 시스템이 Request for Comment (RFC) 882 라고 했다. : 문제가 없는지 나은 개선방안이 없는지 자문을 구하는 과정
+	분산처리해서 관리하는 방식으로 바뀌게 되었다. (복수의 DNS서버를 가지게 됨, DNS서버는 서로 다른 DNS서버와 연결됨 )
+	새로 컴퓨터가 추가되면 추가된 컴퓨터의 정보를 한군데만 업데이트 하면 된다.
+
+	DNS서버 = Name Server
+	네임 서버는 지역과 전국의 ISP에 pair(백업용으로 2개)로 가지고 있다.
+	통상적으로 네트워킹 기능이 가능한 운영체제 소프트워에 위에 DNS소프트웨어가 탑재된 형태로 구선된다.
+	주요 역할은 요청받은 웹사이트에 해당하는 IP주소를 찾아 제공하는 일
+	자기자긴이 요청받은 웹사이트의 정보가 없을때 다른 서버에게 정보를 넘겨주면서 부탁한다.
+	다른 DNS서버를 통해 확보환 웹사이트 주소는 캐쉬를 이용해 일시적으로 저장할 수 있는 기능이 있다.
+	
+Internet Domains(인터넷 도메인)
+	탑레벨 도메인 : .com, .net, .org, .gov, .bis 등이 있다.
+	레벨을 나누기 위해 "."을 이용한다.
+	도메인 레벨은 최대 255개의 characters를 이용해 구성할 수있다.
+	"."으로 구분되는 글자는 최대 63characters로 구성가능
+	[그림 8-2 23:44]
+	탑 레벨 도메인 : .com:기업(컴페니), .edu:(교육기관), .gov(정부기관), .int(국제기관), .mil(국방기관), .net(네트워크 관련된 사업자), .org(비영리 단체), .arpa(초창기)
+	추가된 탑레벨 도메인: .aero(항공), .biz(비지니스), .info, .museum, .name, .pro, 등등
+
+Internet Protocols
+	TCP/IP suite에는 TCP/IP뿐만 아니라 다양한 프로토콜이 존재한다.
+	Address resolution protocol (ARP) : MAC과 IP를 매핑시키는 프로토콜
+	DHCP : 유동아이피를 할당하는 절차와 방식을 규정한 프로토콜
+	ISCSI(스커지라고 읽음) : SANs(Storage Area Network, 데이터를 저장하는 네트워크)에서 데이터 전송을 어떻게 전송할지 정의한다.
+	LDAP(Lightweight Directory Access Protocol) : 데이터베이스에 접근하고 서포트하는 디렉토리 서비스에 대해 정의한 프로토콜
+	HTTP : Web page에서 사용하고 있는 프로토콜
+	[그림 8-2 34:20]
+
+Internet Applications:
+	File Transfer : FTP, HTTP(웹 페이지 정보)
+	Remote Computing : Telnet, SSH를 이용
+	Streaming Media : RTP, UDP, RTCP를 이용
+	Email : SMTP, POP3, IMAP4를 이용
+	Instant Messaging : XMPP, SIMPLE을 이용
+
+<<part3>>
+THE FUTURE OF THE INTERNET
+인터넷을 어떻게 발전시켜 나갈지에 대한것
+vBNS(very-high-speed Backbone) : 
+	MCI가 1995년 NSF를 민영화한후 바로시작한 프로젝트
+	하지만 제대로 개발되지 못하고 MCI가 인수됨
+
+Internet2:
+	1996년부터 대학들이 주축이 되어 인테넷발전을 고민한 모임
+	네트워크 망을 구축하는 개념이 아닌 각자의 관심사를 중심으로 연구를 진행하는 소모임들의 집합이다.
+	Abilene Project : 테스트 네트워크를 구축
+	소모임들을 working group(WG)이라고 부른다. 이런 WG이 많다.
+
+The Next Generation Internet Protocol:
+	IPv4는 32비트 주소체계를 가진다. => 고갈됨
+	IPv6는 128비트 주소체계를 가진다.
+
+IPv6 Business Drivers
+-모바일 기기의 특징인 어떠한 위치에서도 사용가능해야한다 와 같은 이용패턴의 변화까지 방영해서 IPv6를 설계했다.
+-이동시켜야하는 데이터의 양이 많아져서 이런것들을 고려하여 니즈를 충족시켰다.
+
+IPv6 Addressing
+-8개의 16비트의 섹션으로 나누어 표기
+-class A, class B class C와 같은 방식은 사라졌다.(네트워크 ID와 노드 ID를 구분하는 개념이 사라짐, 디바이스가 고정되어 있는 방식에서는 접합했지만..)
+-rounting prefix와 subnet bits를 이용해서 목적지를 찾아 데이터를 이동시키는 방식을 이용
+[그림 8-3 21:00]
+
+Impact on the Organization
+인터넷이 어떤 방향으로 발전해 나갈 수 있을지:
+-실시간으로 정보를 전달할 수 있어야한다.
+-그에 따른 QoS(품질)이 대폭 향상되어야 한다.
+-추후의 서비스를 충족시키도록 진화해야한다.
+-어플리케이션 개발자 입장에서 자기가 집중해야하는 업무에만 매진할수 있는 환경을 만들 수 있도록 해야한다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,115 @@
+<<part1>>
+Wide Area Networks
+
+이번주차 목차
+circuit-switched networks와 packet-switched networks를 알아보자
+초고속 인터넷 서비스가 가능한 기술을 살펴보자
+멀티플랙싱(multiplexing)을 알아보자
+
+Circuit-Switched Carrier Services : 
+-통신을 원하는 A와 B 둘만의 전용경로를 구성한다.
+-연결이 유지되는 동안 둘만 exclusive(독점적으로)하게 사용가능!! -> 그래서 독점한 만큼 요금을 청구한다.(종량제)
+-기본적으로 전화서비스(음성정보)를 위해 구현된 네트워크
+	-> 대형 메인 프레임 컴퓨터가 사용하기 시작
+	-> 속도가 느려서 text위주의 정보를 주고 받음
+-모든 Circuit-Switched 서비스는 PSTN을 통해 제공된다.
+-데이터 서비스를 이용할때 다이얼 모뎀을 이용해야함
+-예전에는 전화와 인터넷을 동시에 사용할 수 없었다.(다른 하나가 꺼짐)
+[7-1 그림 14:00]
+
+Integrated Services Digital Network(ISDN)
+-circuit-switched service도 제공하지만, 디지털 기술을 접목한 방식으로 기존의 PSTN을 업그레이드 시킨 버전
+-기존 아날로그 전화 서비스의 대부분을 포함하고 추가로 더 많은 데이터를 전송할 수 있는 기술을 접목한 것
+-용량이 큰 비디오, 오디오도 딜레이없이 전송될 수 있도록 설계됨
+-AT&T의 독점으로 인해 ISDN이 넓게 전개되지 않았다.(이 때문에 정부는 AT&T를 분리 시킴)
+
+SONET (Synchronous Optical Network)
+- 고속으로 데이터를 보내기 위해 fiber-optic cable을 적용하는 미국의 ANSI에서 만든 표준
+- SONET의 표준은 optical carrier levels(OC-x) 으로 레벨을 구분
+- 듀얼링 형태로 구축된 네트워크
+[7-1 그림 21 : 17]
+
+Packet-Switched Carrier Services
+- Circuit-Switched 네트워크의 단점을 극복하기 위해 만들어짐
+- 데이터 전송이 효율적, 사용사의 편의성 향상
+- 통신 당사자가 특정 회선을 독점적으로(점유) 사용하지 않는다.
+- 회선을 독점적으로 확보하는 시간이 필요없음(Call setup time이 필요 없다.)
+- (== Are always on and ready to transmit.)
+- 특정 회선이 사용되지 않을때 낭비 되는 요소가 없어짐(전화중에 대화(말)하지 않는경우가 발생하지 않으므로)
+- Public Data Network (PDN). 라고도 부른다.
+- 패킷은 packet assembler/disassembler(PAD)라는 장비를 통해 이동
+PAD : 정보를 패킷단위로 쪼개주는/합쳐주는 역할
+- 데이터이동이 골고루 분산되는 효과가 있다.
+[7-1 그림 28:30]
+
+Packet-Switched Services에 적용할 수 있는 아키텍쳐들:
+- X.25 : specifies data communications across the PSTN between remote computers with a maximum data rate of 64 Kbps.
+- Frame Relay : provides data rates ranging from 56 Kbps to 45 Mbps
+- Asynchronous Transfer Mode (ATM) : the widely accepted standard of cell relay 
+최근에는 이더넷 방식이 적용되어 위의 방식이 거의 적용되지 않는다.
+
+<<part2>>
+초고속 인터넷 서비스를 제공할 수 있는 기술들을 알아보자
+
+Digital Subscriber Line Technologies (DSL) : 
+	통신사업자들이 속도를 끌어올린 기술
+	과거의 전화선을 이용해 초고속 인터넷에 접속하여 데이터를 주고받음
+	전화또는 컴퓨터통신 둘 중 하나만 가능한 문제점을 극복한 기술
+	가정(DSL모뎀)이나 CO(DSLAM장치)에 장치를 추가설치해 기존의 전화 회선을 이용하여 문제를 해결
+	음성정보와 데이터정보를 구분해서 서로 다른 네크워크를 통해 이동시키는 방식
+	[7-2 그림 3:30]
+
+very-high-data-rate DSL(VDSL):
+	DSL의 속도를 더욱 끌어올리 기술
+	데이터 전송을 비대칭적(asymmetry)으로 전송 (업로드 16Mbps, 다운로드 52Mbps) : 다운로드에 사용하는 대역폭을 더 많이 할당
+		
+Cable Television (CATV) :
+	케이블 방송 사업자(System Operator : SO)에게 제공받는 방식
+	업로드 보다는 다운로드가 빠르도록 대역폭을 할당함
+	가정은 (케이블 모뎀) 방송사업자는cable modem termination system (CMTS) 를 headend(CO라고 생각하면 됨)에 설치해야 한다.
+	주로 hybrid fiber coax (HFC) network를 구축함 (데이터량이적은 가정과 Headend까지는 coax cable, 데이터양이 많은 Headend부터 방송국까지는 Fiber optic cable사용)
+	[7-2 그림 17:40]
+
+방송과 관련된 용어:
+	프로그램을 공급하는 사람(Program Provider: PP)
+	여러 프로그램을 공급하는 사람 (Multiple Program Provider: MPP)
+	컨텐츠를 제공하는 사람 (Contents Provider: CP)
+	네트워크 망을 임대해주는 사람(Network Operator: NO)
+	네플릭스 등을 제공하는 사업자(Over The Top: OTT)
+
+Metropolitan Ethernet networks(MENs) :
+	100메가 ~ 10기가까지 지원
+	The Metro Ethernet Forum (MEF) 에서 이와 관련된 표준 작업을 수행한다.
+
+passive optical network (PON) :
+	광케이블 이용, 1대다 형태로 연결하여 하나의 포인트에서 서비스를 제공
+	이를 위해 Optical splitters라는 장비를 이용한다.
+	APON은 ATM기반 PON,	EPON은 이더넷 기반의 PON
+	[7-2 그림 25:00]
+
+Wireless MAN/WAN services(WiMAX):
+	휴대인터넷기술(휴대전화와 비슷한 양상으로 발전됨)
+	IEEE802.16표준
+	우리 나라에서는 wireless Broadband internet이라는 명칭으로 제공했었다.(최근에는 데이터네트워크와 음성네트워크가 모호해지면서 망함)
+
+Multiplexing:
+	여러 가입자들로부터 발생된 신호를 묶어서 목적지까지 이동시키는 기술
+	목적지에서는 묶은 신호를 개별시호로 뽑아서 전달
+	[7-2 그림 43:35]
+	주파수 기준으로 나누는 Multiplexing (FDM)
+	시간을 기준으로 나누는 Multiplexing (TDM)
+	[7-2 그림2개 46:20]
+
+
+
+
+
+
+
+
+
+
+
+
+
+

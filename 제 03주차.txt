@@ -1,0 +1,153 @@
+<<<part1>>>
+챕터3 - Local Area Networks –Topologies and Architectures
+
+이번주차 목차
+LAN topology 를 알아보고 bus, star, ring, and wireless topologies 의 특징과 장단점을 알아보자
+physical and logical topologies 도 살펴보자
+LAN architecture 개념을 살펴보자
+가장 대표적은 LAN architecture인  Ethernet LAN architecture를 살펴보자
+Ethernet의 표준과 이더넷에 적용되는 엑세스 방법을 알아보자
+wireless(wifi같은) LAN architecture를 살펴보자
+wireless LAN and wireless PAN 기술과 역사를 논의해보자
+와피파이와 블루트스의 표준에 관련된 내용을 알아보자
+무선방식 아키텍쳐를 고려할때 염두해두어야할 중요한 사항들
+FDDI와 ATM을 알아보자(최근에 구축하는 네트워크에서는 사용하지 않는다.)
+
+LAN topology란
+LAN topology는 네트워크의 모양세가 어떻게 생겼는지를 가지고 구분한다.
+기본적으로 bus, star, ring, and wireless의 타입이 있다.
+물리적인 topology와 논리적인 topology를 고려해서 구성해야한다.
+
+Physical topology : LAN를 구성할때 실제 배선이 어떻게 연결되는지에 따라 구분된는 개념
+Logical topology: LAN을 구성해 놓고 LAN의 전송매체를 따라서 데이터가 이동하는 모양을 가지고 구분
+*경우에 따라 Physical topology와 Logical topology가 다르게 나타날 수 있다.
+
+bus topology : 버스가 이동하면서 승객을 태우고 내리는 모양과 비슷 (물리topology==논리topology 가 같다),
+		주로 동축케이블
+		[3주차-1,  9:34분 그림 참조]
+	장점 : 구현이 쉽고, 비용이 적다.
+	단점 : 한부분이 문제가 생겨도 전체가 동작하지 않는다, 문제가 발생한 곳을 찾기도 어렵다.
+
+star topology :  중심에 연결장치가 있고 거기서 디바이스에 선을 연결하는 방식
+		주로 허브나 스위치같은 장치에서 사용, UTP케이블이 주로 사용됨
+		[3주차-1,  13:010분 그림 참조]
+	장점 : 구성이 단순하다. 연결된 케이블이 문제가 생기더라도 전체 네트워크가 다운되지는 않는다.
+	단점 : 연결장치에 문제가 생기면 전체네트워크는 동작하지 않는다.
+
+	hub(허브)의 경우 연결기능을 수행하지만 특별한 지능을 가지지 않는다.(연결된 모든 장치로 전송만 함)
+	따라서 이 경우는 "Physical star/logical bus" 이다.
+	
+	switch의 경우 데이터가 어디서 왔고 목적지가 어딘지 구분해낼 수있는 연결장치이다. 즉, 목적지와 연결된 장치로만 데이터를 보낸다.
+	따라서 이 경우 "Physical star/logical star" 이다.
+
+ring topology : 모든 디바이스들이 원형태에서 파생된 형태로 연결된다.
+		데이터는 디바이스와 디바이스 사이를 따라 흐르며, 방향은 한방향(unidirectional fashion)으로 고정된다.
+	장점 : ()부분
+	단점 : 링형 자체로 손상을 입게 되면 전체 네트워크가 동작하지 못한다.
+		(그래서 보통 백업용으로 2개 이상을 설치한다 : 듀얼링&데이터 이동방향을 서로 반대로 하는것이 일반적)
+
+Wireless(무선) topologies : 공기중의 주파수 대역을 사용한다.
+		연결정치 대신 access point(공유기 같은거)를 사용
+		access point의 경우 주파수로 데이터를 이동시키기 때문에 거리가 제한된다.
+			=> 원형의 벙위가 나오는데 이것을 cell이라고 한다. 따라서 하나의 cell에서 하나의 access point 가 존재한다.
+	Wireless topologies는 "Physical star/logical bus"이다.
+	*하지만 Wireless topologies내의 각각의 디바이스들이 똑같은 데이터를 받지는 않는다.
+	장점 : 설치가 용이하다, 배선작업이 필요가 없다. cell반경내 디바이스의 위치를 옮겨도 상관이 없다.
+	단점 : 디바이스가 cell반경을 넘어가면 서비스를 할수 없다(거리의 제한이 생긴다.), 보안이 더 취약하다.
+
+
+<<<part2>>>
+LAN architecture 란? 데이터가 전송매체에 어떻게 접근하는지에 대해 정의 하는것
+		전송매체에 데이터를 어떻게 어떤 구조로 묶어서 실어 보낼지를 정의하는 것
+
+LAN ARCHITECTURES - ETHERNET:
+1970년대 초반 개발됨
+Alohanet(하와이의 네트워크) 이라고 불리는 네트워크에 적용하기 위한 구조로 개발됨
+Bob Metcalfe 라는 분이 이것을 발명했다.
+처음 이더넷 표준은 DIX라는 이름을 붙였다.
+그 이후 IEEE 이더넷 표준으로서 IEEE 802.3이라는 이름으로 이름이 붙여졌다.
+LANs의 가장 많이 쓰는 구조
+신뢰할수 있고, 구현하기 쉽고, 비용도 적다.
+업계 표준으로 널리 쓰인다.
+
+이더넷은 원래 thicknet(10Base5)으로 배포되었고, 나중에 thinnet (10Base2)으로 배포됨
+나중에 UTP(10Base-T)나 UTP(100Base-T)을 사용하는 이더넷이 나옴
+(10Base-T) 는 10Mbps, (100Base-T)100Mbps의 속도를 낸다.
+이더넷 표준도 지간이 지남에 따라 발전한다 : IEEE 802.3x
+[3주차-2,  8:30분 그림 참조]
+
+LAN ARCHITECTURES - ETHERNET ACCESS METHOD (*중요한 개념)
+이더넷은 CSMA/CD라는 엑세스 메소드를 사용한다.
+Carrier sense Multiple access 의 약자
+Carrier sense의 의미 : 디바이스가 전송매체에 데이터를 보내기 전에 지금 현재 네트워크를 타고 이동하는 데이터가 있는지 감지
+		(있으면 기다렸다가 보내기위해, 그렇지 않으면 데이터가 출동함)
+Multiple access의 의미 : 이더넷망에 연결된 디바이스 모두가 같은 권리를 같는다는 것(동등한 권리 = 선착순)
+Collision detection의 의미 : 충돌이 발생했을 경우 이더넷망의 모든 디바이스에게 알려준다. (거의 동일한 시간에 데이터를 보낼경우 충돌할 수도 있기 때문에)
+	그런경우 데이터를 송신한 디바이스들은 랜덤한 시간을 기다렸다가 다시 전송한다.
+장점 : 구성하기 쉽고, 많이 알려진 표준이기 때문에 적용에 좋다.
+단점 : 이더넷 망에 연견된 디바이스가 늘어날 수록 충돌확률이 늘어난다.(따라서 적절한 수의 디바이스가 연결되도록 조절해야함)
+
+ETHERNET: TECHNICAL AND BUSINESS CONSIDERATIONS(비지니스 고려 사항)
+이더넷은 거리내 연결시킬 디바이스의 수를 제한 시킨다.
+예를 들어, 100 Mbps Ethernet은 네트워크 반경을 205m로 최대 세그면트를 100미터로 제한
+이더넷관 관련된 장비를 공급하는 곳이 많다.
+과거의 기술과 연동이 잘된다.
+기술 지원도 충분히 받을 수 있다.
+
+LAN ARCHITECTURES – WIRELESS
+Wireless architectures에 IEEE 802.11(wifi), IEEE 802.15(Bluetooth), and HomeRF 가 있다.
+IEEE 802.11 와 IEEE 802.15는 표준으로 지정되어있다.
+[3주차-2,  21:00분 그림 참조]
+
+LAN ARCHITECTURES – WIRELESS ACCESS METHODS
+IEEE 802.11(wifi)는 CSMA/CA : distributed coordination function (DCF) 라고 알려진 collision avoidance(위의 CD를 개선한 방식으로 충돌을 예방함) 방식을 사용한다.
+	DCF : mac주소를 이용해 충돌을 예방해줌
+IEEE 802.15(Bluetooth) 는 폴링(여론조사)매커니즘을 이용한다.
+	마스터역할을 하는 디바이스가 하나가 있고, 슬레이브 역할을 하는 디바이스로 나뉜다.
+	마스터 디바이스가 슬레이브 디바이스에게 보낼데이터가 있는지 물어봐주면서 데이터를 얻어옴
+	이러한 모양때문에 bluetooth를 piconet이라고도 부른다.
+	이런 방식은 근본적으로 충돌이 일어날 수 없다는 장점
+
+WIRELESS TECHNICAL CONSIDERATIONS (WIRELESS 네트워크를 구성할때 고려사항)
+주파수대역이 중복되는 것을 피해야 한다.
+엑세스 포인트의 위치를 잘 잡아야 최소한의 개수로 전체영역을 커버할 수 있다. (세개의 원이 한점에서 접하도록)
+[3주차-2,  27:40분 그림 참조], 겹치는 지역:hand-off area,  로밍 : hand-off의 일종으로 양쪽 셀의 사업자가 다른 경우
+
+WIRELESS BUSINESS CONSIDERATIONS
+비용(아직 유선이 더 싸다.)
+어떤 wireless architecture를 구축할지 선택해야 한다.
+기존에 구축된 유선 네트워크와 연결되는 것이 필수적이다.
+요구되는 거리와 전송속도를 맞추는것이 바람직 하다.
+
+LAN ARCHITECTURES – FDDI (과거에 많이 사용된 아키텍쳐)
+Fiber Distributed Data Interface의 약자
+아직도 사용되는 네트워크 들이 현존한다.
+1980년대 후반까지 고속의 네트워크 환경이 필요한 곳에서 적용되었다.
+[3주차-2,  35:40분 그림 참조], 듀얼링구성으로 되어있다.
+최근에는 FDDI 대신 기가비트급 이상의 이더넷이 주로 적용되고 있다.
+
+LAN ARCHITECTURES – ATM (과거에 많이 사용된 아키텍쳐)
+ATM : 비동기 전송 모드, 1960년대 후반 Bell Labs에서 개발됨
+ATM은 고속으로 지연이 적게 음성,비디오 데이터까지 보내기 위해 개발 되었다.
+ATM은 network backbones, wide area networks, and carrier service networks에 많이 적용된 기술
+ATM 또한 새로 구축되는 네트워크에서는 사용되지 않는다.(이더넷을 사용한다.)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
